@@ -1,0 +1,58 @@
+{
+  "name": "riot-tag",
+  "displayName": "Riot-Tag",
+  "description": "Riot Tag Syntax Highlighting for Riot.js HTML,JADE and Coffeescript",
+  "version": "0.1.9",
+  "icon": "images/icon.png",
+  "publisher": "riot",
+  "engines": {
+    "vscode": "^0.10.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/riot/syntax-highlight"
+  },
+  "categories": [
+    "Languages"
+  ],
+  "homepage": "https://github.com/riot/syntax-highlight",
+  "bugs": {
+    "url": "https://github.com/riot/syntax-highlight/issues"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "jadetag",
+        "aliases": [
+          "Riot (Jade/Pug)"
+        ],
+        "extensions": [
+          ".tag"
+        ],
+        "configuration": "./jadetag.configuration.json"
+      },
+      {
+        "id": "htmltag",
+        "aliases": [
+          "Riot (HTML)"
+        ],
+        "extensions": [
+          ".tag"
+        ],
+        "configuration": "./htmltag.configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "jadetag",
+        "scopeName": "source.jade.riot",
+        "path": "./syntaxes/TAG-Jade.tmLanguage"
+      },
+      {
+        "language": "htmltag",
+        "scopeName": "text.html.riot",
+        "path": "./syntaxes/TAG.tmLanguage"
+      }
+    ]
+  }
+}
