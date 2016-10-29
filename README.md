@@ -13,7 +13,7 @@ This extension supports HTML, Jade, Stylus and Coffeescript within script tags.
 
 With this plugin you can use
 
-```
+```html
 <yourtag>
   <script type="test/coffee">
     # your coffee script here
