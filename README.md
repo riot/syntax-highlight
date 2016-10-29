@@ -127,7 +127,7 @@ Then use `npm run watch` during development and `npm run build` prior to deploym
 ### Giving Feedback
 
 If you have any problems, feedback or just fancy starring this project
-see https://github.com/crisward/riot-tag
+see https://github.com/riot/syntax-highlight
 
 
 ### History
