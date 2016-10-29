@@ -532,6 +532,6 @@
     "keyEquivalent": "^~H", 
     "uuid": "48266eb4-3150-11e6-ac61-9e71128cae77", 
     "foldingStopMarker": "(?x)\n\t\t(</(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)>\n\t\t|^(?!.*?<!--).*?--\\s*>\n\t\t|^<!--\\ end\\ tminclude\\ -->$\n\t\t|\\{\\{?/(if|foreach|capture|literal|foreach|section|strip)\n\t\t|^[^{]*\\}\n\t\t)", 
-    "name": "Riot Tag", 
+    "name": "Riot(HTML)", 
     "foldingStartMarker": "(?x)\n\t\t(<(?i:head|body|table|thead|tbody|tfoot|tr|div|select|fieldset|style|script|ul|ol|li|form|dl)\\b.*?>\n\t\t|<!--(?!.*--\\s*>)\n\t\t|^<!--\\ \\#tminclude\\ (?>.*?-->)$vs\n\t\t|\\{\\{?(if|foreach|capture|literal|foreach|section|strip)\n\t\t|\\{\\s*($|\\?>\\s*$|//|/\\*(.*\\*/\\s*$|(?!.*?\\*/)))\n\t\t)"
 }

@@ -45,14 +45,14 @@
     ],
     "grammars": [
       {
-        "language": "jadetag",
-        "scopeName": "source.jade.riot",
-        "path": "./syntaxes/TAG-Jade.tmLanguage"
-      },
-      {
         "language": "htmltag",
         "scopeName": "text.html.riot",
         "path": "./syntaxes/TAG.tmLanguage"
+      },
+      {
+        "language": "jadetag",
+        "scopeName": "source.jade.riot",
+        "path": "./syntaxes/TAG-Jade.tmLanguage"
       }
     ]
   }

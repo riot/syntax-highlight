@@ -27,7 +27,7 @@
 	<key>keyEquivalent</key>
 	<string>^~H</string>
 	<key>name</key>
-	<string>Riot Tag</string>
+	<string>Riot(HTML)</string>
 	<key>patterns</key>
 	<array>
 		<dict>
