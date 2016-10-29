@@ -15,7 +15,7 @@ With this plugin you can use
 
 ```html
 <yourtag>
-  <script type="test/coffee">
+  <script type="coffee">
     # your coffee script here
   </script>
   <script>
@@ -46,7 +46,7 @@ yourtag
   style.
     /* your css here */
     
-  style(type="text/stylus")
+  style(type="stylus")
     // your stylus here 
 
 ```
