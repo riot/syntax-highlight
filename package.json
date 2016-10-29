@@ -6,7 +6,8 @@
   "icon": "images/icon.png",
   "publisher": "riot",
   "engines": {
-    "vscode": "^0.10.6"
+    "vscode": "^0.10.6",
+    "atom": "*"
   },
   "repository": {
     "type": "git",

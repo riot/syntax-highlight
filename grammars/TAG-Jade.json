@@ -1,0 +1,397 @@
+{
+    "uuid": "f19ae2c7-b17f-4e74-8f2d-0892c798b2cf", 
+    "scopeName": "source.jade.riot", 
+    "repository": {
+        "string-double-quoted": {
+            "begin": "\"", 
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.jade"
+                }
+            }, 
+            "patterns": [
+                {
+                    "include": "#entities"
+                }
+            ], 
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.begin.jade"
+                }
+            }, 
+            "end": "\"", 
+            "name": "string.quoted.double.jade"
+        }, 
+        "sass": {
+            "patterns": [
+                {
+                    "include": "source.sass"
+                }
+            ], 
+            "begin": "^(\\s*)\\:sass", 
+            "end": "(?!^\\1\\s+)"
+        }, 
+        "tag-generic-attribute": {
+            "name": "entity.other.attribute-name.jade", 
+            "match": "\\b([a-zA-Z\\-:_]+)"
+        }, 
+        "string-single-quoted": {
+            "begin": "'", 
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.end.jade"
+                }
+            }, 
+            "patterns": [
+                {
+                    "include": "#entities"
+                }
+            ], 
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.definition.string.begin.jade"
+                }
+            }, 
+            "end": "'", 
+            "name": "string.quoted.single.jade"
+        }, 
+        "tag-stuff": {
+            "patterns": [
+                {
+                    "include": "#string-double-quoted"
+                }, 
+                {
+                    "include": "#string-single-quoted"
+                }, 
+                {
+                    "include": "#tag-generic-attribute"
+                }
+            ]
+        }, 
+        "entities": {
+            "patterns": [
+                {
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.entity.jade"
+                        }, 
+                        "3": {
+                            "name": "punctuation.definition.entity.jade"
+                        }
+                    }, 
+                    "name": "constant.character.entity.jade", 
+                    "match": "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)"
+                }, 
+                {
+                    "name": "invalid.illegal.bad-ampersand.jade", 
+                    "match": "&"
+                }
+            ]
+        }, 
+        "filter-langs": {
+            "patterns": [
+                {
+                    "include": "#markdown"
+                }, 
+                {
+                    "include": "#sass"
+                }
+            ]
+        }, 
+        "markdown": {
+            "patterns": [
+                {
+                    "include": "text.html.markdown"
+                }
+            ], 
+            "begin": "markdown\\s*$\\n?", 
+            "end": "(?!^\\1\\s+)"
+        }
+    }, 
+    "comment": "Riot (Jade)", 
+    "patterns": [
+        {
+            "captures": {
+                "1": {
+                    "name": "keyword.control.import.include.jade"
+                }
+            }, 
+            "match": "^\\s*\\b(include)\\b"
+        }, 
+        {
+            "name": "keyword.other.doctype.jade", 
+            "match": "^(!!!)(\\s*[a-zA-Z0-9-_]+)?"
+        }, 
+        {
+            "captures": {
+                "1": {
+                    "name": "punctuation.section.comment.jade"
+                }
+            }, 
+            "name": "comment.line.double-slash.jade", 
+            "match": "^\\s*(//-?)(?:\\s*[^-\\s]|\\s+\\S).*$\\n?"
+        }, 
+        {
+            "begin": "^(\\s*)(//-?)\\s*$", 
+            "beginCaptures": {
+                "2": {
+                    "name": "punctuation.section.comment.jade"
+                }
+            }, 
+            "end": "^(?!\\1\\s+|$)", 
+            "name": "comment.block.jade"
+        }, 
+        {
+            "patterns": [
+                {
+                    "include": "text.html.markdown"
+                }
+            ], 
+            "begin": "^(\\s*)(\\:markdown)", 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.function.jade"
+                }
+            }, 
+            "end": "^(?!\\1\\s+)", 
+            "name": "meta.filter.markdown.jade"
+        }, 
+        {
+            "patterns": [
+                {
+                    "include": "source.sass"
+                }
+            ], 
+            "begin": "^(\\s*)(\\:sass)", 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.function.jade"
+                }
+            }, 
+            "end": "^(?!\\1\\s+)", 
+            "name": "meta.filter.sass.jade"
+        }, 
+        {
+            "patterns": [
+                {
+                    "include": "source.css.less"
+                }
+            ], 
+            "begin": "^(\\s*)(\\:less)", 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.function.jade"
+                }
+            }, 
+            "end": "^(?!\\1\\s+)", 
+            "name": "meta.filter.less.jade"
+        }, 
+        {
+            "patterns": [
+                {
+                    "patterns": [
+                        {
+                            "include": "#tag-stuff"
+                        }
+                    ], 
+                    "begin": "(?<=script)\\s*\\(", 
+                    "end": "\\)."
+                }, 
+                {
+                    "include": "source.coffee"
+                }
+            ], 
+            "begin": "^(\\s*)(script)(?=\\(type=[\"'](text\\/)?coffee(script)?['\"]\\)\\.)", 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.tag.coffee.jade"
+                }
+            }, 
+            "end": "^(?!(\\1\\s)|\\s*$)", 
+            "name": "source.coffee.embedded.jade"
+        }, 
+        {
+            "begin": "^(\\s*)(\\:cdata)", 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.function.jade"
+                }
+            }, 
+            "end": "^(?!\\1\\s+)", 
+            "name": "meta.filter.cdata.jade"
+        }, 
+        {
+            "comment": "match stuff like: mixin dialog-title-desc(title, desc)", 
+            "captures": {
+                "1": {
+                    "name": "storage.type.function.jade"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.parameters.begin.jade"
+                }, 
+                "2": {
+                    "name": "entity.name.function.jade"
+                }, 
+                "5": {
+                    "name": "punctuation.definition.parameters.end.jade"
+                }, 
+                "4": {
+                    "name": "variable.parameter.function.jade"
+                }
+            }, 
+            "name": "meta.mixin.jade", 
+            "match": "^\\s*(mixin) ([\\w\\-]+)\\s*(\\()(.*?)(\\))"
+        }, 
+        {
+            "comment": "match stuff like: mixin dialog-title-desc", 
+            "captures": {
+                "1": {
+                    "name": "storage.type.function.jade"
+                }, 
+                "2": {
+                    "name": "entity.name.function.jade"
+                }
+            }, 
+            "name": "meta.mixin.jade", 
+            "match": "^\\s*(mixin) ([\\w\\-]+)"
+        }, 
+        {
+            "patterns": [
+                {
+                    "include": "source.js"
+                }, 
+                {
+                    "name": "keyword.control.js", 
+                    "match": "\\b(each)\\b"
+                }
+            ], 
+            "begin": "^\\s*(-|=|!=)", 
+            "end": "$", 
+            "name": "source.js.embedded.jade"
+        }, 
+        {
+            "patterns": [
+                {
+                    "patterns": [
+                        {
+                            "include": "#tag-stuff"
+                        }
+                    ], 
+                    "begin": "(?<=style)\\s*\\(", 
+                    "end": "\\)."
+                }, 
+                {
+                    "include": "source.stylus"
+                }
+            ], 
+            "begin": "^(\\s*)(style)(?=\\(type=[\"'](text\\/)?stylus['\"][^)]*\\)\\.)", 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.tag.stylus.jade"
+                }
+            }, 
+            "end": "^(?!(\\1\\s)|\\s*$)"
+        }, 
+        {
+            "begin": "^(\\s*)(style)((\\.$)|(?=[.#(].*\\.$))", 
+            "comment": "Style tag with CSS code.", 
+            "patterns": [
+                {
+                    "patterns": [
+                        {
+                            "include": "#tag_attributes"
+                        }
+                    ], 
+                    "begin": "\\G(?=\\()", 
+                    "end": "$", 
+                    "name": "stuff.tag.style.jade"
+                }, 
+                {
+                    "patterns": [
+                        {
+                            "include": "#complete_tag"
+                        }
+                    ], 
+                    "begin": "\\G(?=[.#])", 
+                    "end": "$", 
+                    "name": "stuff.tag.style.jade"
+                }, 
+                {
+                    "include": "source.css"
+                }
+            ], 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.tag.script.jade"
+                }
+            }, 
+            "end": "^(?!(\\1\\s)|\\s*$)", 
+            "name": "meta.tag.other"
+        }, 
+        {
+            "patterns": [
+                {
+                    "patterns": [
+                        {
+                            "include": "#tag-stuff"
+                        }
+                    ], 
+                    "begin": "(?<=script)\\s*\\(", 
+                    "end": "\\)"
+                }, 
+                {
+                    "include": "source.js"
+                }
+            ], 
+            "begin": "^(\\s*)(script)", 
+            "beginCaptures": {
+                "2": {
+                    "name": "entity.name.tag.script.jade"
+                }
+            }, 
+            "end": "^(?!(\\1\\s)|\\s*$)", 
+            "name": "source.js.embedded.jade"
+        }, 
+        {
+            "name": "string.interpolated.jade", 
+            "match": "[#!]\\{[^\\}]+\\}"
+        }, 
+        {
+            "comment": "Match any tag, id or class. skip AST filters", 
+            "captures": {
+                "1": {
+                    "name": "meta.tag.any.jade"
+                }, 
+                "2": {
+                    "name": "entity.name.tag.jade"
+                }
+            }, 
+            "begin": "^\\s*(?![\\w-]+\\:)(?:(([\\w-]+))|(?=\\.|#))", 
+            "end": "$|(?!\\.|#|=|-)", 
+            "patterns": [
+                {
+                    "name": "meta.tag.attribute.class.jade", 
+                    "match": "\\.[\\w-]+"
+                }, 
+                {
+                    "name": "meta.tag.attribute.id.jade", 
+                    "match": "#[\\w-]+"
+                }
+            ]
+        }, 
+        {
+            "patterns": [
+                {
+                    "include": "#tag-stuff"
+                }
+            ], 
+            "begin": "(?<=\\w)\\s*\\(", 
+            "end": "\\)", 
+            "name": "meta.tag.attribute.jade"
+        }
+    ], 
+    "fileTypes": [
+        "tag"
+    ], 
+    "name": "Riot (Jade/Pug)"
+}
