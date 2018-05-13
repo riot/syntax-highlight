@@ -1,6 +1,6 @@
 # Riot Syntax Highlighters
 
-[Riot.js](http://riotjs.com/) tag syntax highlighting for 
+[Riot.js](http://riot.js.org/) tag syntax highlighting for 
 
 * [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=crisward.riot-tag)
 * [Atom](https://atom.io/packages/riot-tag)
