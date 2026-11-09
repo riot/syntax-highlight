@@ -73,7 +73,6 @@ variables:
   # Riot custom properties
   unquoted_attribute_value: (?:[^\s<>/''"]|/(?!>))+
   expression_start: ((?<!\\){)
-  expression_close_lookahead: (?=(s*)})
 
   # Directives
   directive_attributes: (?i)\b(each|is|if|show|hide)\b
@@ -634,14 +633,19 @@ contexts:
   # Riot stuff
   expression:
     - match: '{{expression_start}}'
-      escape: '{{ expression_start }}'
-      push:
-        - match: '{{expression_close_lookahead}}'
-          pop: true
-        - match: (?=\S)
-          embed: scope:source.js
-          embed_scope: source.js.embedded.riot
-          escape: '{{expression_close_lookahead}}'
+      push: expression-body
+
+  # One continuous JavaScript embed, ended by the first `}` no JavaScript context
+  # is waiting for. Nested braces are consumed by the JavaScript grammar's own
+  # object and block contexts, and strings by its own string contexts, so a `}`
+  # inside either of them does not end the expression and the JavaScript is never
+  # restarted mid-expression (restarting it made the closing `)` of `fn({a: 1})`
+  # an illegal stray bracket).
+  expression-body:
+    - meta_scope: source.js.embedded.riot source.js
+    - match: '\}'
+      pop: true
+    - include: scope:source.js#statements
 
   tag-directive:
     - match: '{{directive_attributes}}'
