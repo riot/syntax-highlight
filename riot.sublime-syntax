@@ -648,8 +648,10 @@ contexts:
     # `statements` treats a stray `)` or `]` as an illegal end bracket and pops, which ended the
     # expression early and left the rest as plain HTML (<p>{ fn(a)) + b }</p> lost `+ b`). The
     # JavaScript grammar's `script` context deliberately does not pop there; consuming the
-    # character without actions gives the same result.
+    # character without actions gives the same result. It is still scoped as the same illegal
+    # stray bracket Sublime paints red, under the name the JavaScript grammar uses.
     - match: '\)|\]'
+      scope: invalid.illegal.stray-bracket-end.js
     - include: scope:source.js#statements
 
   tag-directive:
